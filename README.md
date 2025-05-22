@@ -18,7 +18,7 @@ This project builds a complete, containerized ETL pipeline to process and analyz
 
 ## 📊 System Architecture
 
-![Architecture Diagram](./A_flowchart_diagram_illustrates_a_data_processing_.png)
+![Architecture Diagram](./workflow-architecture.png)
 
 ---
 
