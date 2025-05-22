@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  etl:
+    build: ./python-scripts
+    depends_on:
+      - postgres
+    volumes:
+      - ./python-scripts:/app
+    working_dir: /app
+    command: ["python3.10", "etl.py"]
+
+  jupyter:
+    build: ./jupyter
+    ports:
+      - "8888:8888"
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+    volumes:
+      - ./jupyter:/home/jovyan/work
+    depends_on:
+      - postgres
+    command: start-notebook.sh --NotebookApp.token=''
+
+
+volumes:
+  pgdata:
