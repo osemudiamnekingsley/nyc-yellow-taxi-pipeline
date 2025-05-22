@@ -18,7 +18,7 @@ This project builds a complete, containerized ETL pipeline to process and analyz
 
 ## 📊 System Architecture
 
-<img src="./workflow-architecture.png" alt="Workflow Architecture" width="600"/>
+<img src="./workflow-architecture.png" alt="Workflow Architecture" width="300"/>
 
 
 ---
